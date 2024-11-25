@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Dynamic Vehicle Identification & Tracker{% endblock %}</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<style>
+  body {
+    position: relative;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background-image: url("{% static 'detection/images/modern_city.jpeg' %}");
+    background-repeat: no-repeat;
+    background-size: cover; /* Ensures the image covers the full background */
+    background-attachment: fixed;
+    background-position: center; /* Centers the image */
+    min-height: 100vh; /* Ensures the body takes the full height of the viewport */
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+
+  /* Styles for content to ensure readability */
+  .main-content, header, footer, .messages {
+    position: relative;
+    z-index: 1;
+    color: #fff; /* Ensures text is readable over the darkened background */
+  }
+
+  /* Navbar styling */
+  .navbar {
+    background-color: transparent !important; /* Makes the navbar background completely transparent */
+    border: none; /* Removes border for cleaner look */
+  }
+
+  .navbar .nav-link {
+    color: black; /* Sets text color to black */
+    position: relative; /* Required for the box effect */
+    padding: 8px 15px; /* Adds padding for better spacing */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for background and color changes */
+  }
+
+  .navbar .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Light background on hover */
+    border-radius: 5px; /* Rounded corners for the box effect */
+  }
+
+  /* Table styling */
+  table, th, td {
+    border: 2px solid black;
+    padding: 2px;
+  }
+
+  /* Footer styling */
+  .main-content {
+    flex: 1; /* Allows main content to grow and take available space */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+  }
+
+  footer {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Slight background for readability */
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+  }
+</style>
+<body>
+  <!-- Navbar with responsive toggle and centered title -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <!-- Toggle button for collapsing the menu on smaller screens -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Collapsible content -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <!-- Left-aligned links inside the toggle -->
+        <div class="navbar-nav">
+          <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/inventory/home/">Home</a>
+          {% if user.is_authenticated %}
+            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+          {% else %}
+            <a class="nav-link" href="{% url 'login' %}">Login</a>
+          {% endif %}
+          <a class="nav-link" href="http://127.0.0.1:8000/inventory/contact/">Contact</a>
+          <a class="nav-link" href="{% url 'services' %}">Services</a>
+
+        </div>
+      </div>
+
+      <!-- Centered title for large screens, shifts to right on small screens -->
+      <span class="navbar-text ms-auto" style="font-size: 1.5rem; color: black; font-weight: bold;">
+        DYNAMIC VEHICLE IDENTIFICATION AND TRACKING
+      </span>
+    </div>
+  </nav>
+
+  <main class="main-content">
+      {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+      &copy; 2024 My Django Project. All rights reserved.
+  </footer>
+</body>
+</html>

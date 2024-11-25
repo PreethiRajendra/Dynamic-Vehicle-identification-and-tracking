@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Services{% endblock %}
+
+{% block content %}
+<style>
+    /* Add your internal styles here */
+    body {
+        background-color: #f4f6f9; /* Light background for contrast */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        min-height: 100vh; /* Full viewport height */
+        padding: 20px;
+    }
+
+    .services-container {
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column; /* Stack rows vertically */
+        max-width: 1200px; /* Max width for the container */
+        width: 100%; /* Full width */
+    }
+
+    .services-row {
+        display: flex; /* Row with flexbox */
+        justify-content: space-around; /* Space boxes evenly */
+        margin-bottom: 20px; /* Space between rows */
+    }
+
+    .service-box {
+        background-color: rgba(0, 0, 0, 0.6);
+        border-radius: 10px; /* Rounded corners */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Box shadow */
+        padding: 20px; /* Padding inside boxes */
+        text-align: center; /* Center text */
+        transition: transform 0.3s; /* Smooth transition for hover effect */
+        flex: 1; /* Each box takes equal space */
+        margin: 0 10px; /* Space between boxes */
+    }
+
+    .service-box:hover {
+        transform: translateY(-5px); /* Lift effect on hover */
+    }
+
+    h2 {
+        color: #fde0a2; /* Green color for headings */
+        margin-bottom: 10px; /* Space below heading */
+    }
+</style>
+
+<div class="services-container">
+    <div class="services-row">
+        <div class="service-box">
+            <h2>Identification</h2>
+            <p>Real-time identification of vehicles using license plate recognition and advanced image processing.</p>
+        </div>
+        <div class="service-box">
+            <h2>Tracking</h2>
+            <p>Continuous tracking of vehicle locations to provide updates on movement and routes.</p>
+        </div>
+        <div class="service-box">
+            <h2>Monitoring</h2>
+            <p>Monitoring vehicle conditions, including speed, fuel levels, and maintenance needs.</p>
+        </div>
+    </div>
+    <div class="services-row">
+        <div class="service-box">
+            <h2>Alerts</h2>
+            <p>Sending alerts for unauthorized access, geofencing breaches, or unusual activity.</p>
+        </div>
+        <div class="service-box">
+            <h2>Reporting</h2>
+            <p>Generating detailed reports on vehicle usage, travel patterns, and maintenance history.</p>
+        </div>
+        <div class="service-box">
+            <h2>Integration</h2>
+            <p>Integrating with other systems (e.g., fleet management, navigation) for enhanced functionality.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
